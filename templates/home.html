@@ -1,0 +1,100 @@
+<!DOCTYPE>
+<html>
+<head>   
+<style>
+   input{
+    background-color:hotpink;
+    padding:20px;
+    margin:30px;
+    border-radius:30px;  
+    
+}
+   body{
+     
+    font-family: ziglets;
+    background-image: url("https://img.magnific.com/premium-vector/pink-cloud-aesthetic-grid-template_363897-17156.jpg?semt=ais_hybrid&w=740&q=80");
+    background-size: cover;
+    background-position: center;
+}
+
+   .btn{
+    background-color: #e94ac4;
+    padding:10px;
+    color:#0c010a;
+    text-decoration: none;
+    border-radius: 10px;
+   }
+   .btn:hover {
+    background-color: rgb(118, 12, 239);
+}
+   .like{
+    background-color: rgb(227, 94, 245);
+   }
+   .delete{
+    background-color: palevioletred;
+   }
+   button{
+    background-color:magenta;
+    padding:20px;
+    margin:30px;
+    border-radius: 30px;
+   }
+   body{
+     font-family:ziglets;
+}
+   .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e00dab;
+    padding: 15px;
+    color: white;
+}
+button:hover {
+    background-color: purple;
+    box-shadow: 0px 4px 10px rgba(250, 76, 204, 0.882);
+}
+
+.navbar h2 {
+    margin: 0;
+}
+.post {
+    background-color: #faa9ea;
+    border: 1px solid #480a43;
+    padding: 15px;
+    margin: 15px;
+    width: 300px;
+}
+</style>
+      <title>femagaram</title>
+</head>
+<body>
+    <div class="navbar">
+    <h2>Mini Insta</h2>
+    <a href="/logout" class = "btn">LOGOUT</a>
+    </div>
+
+    <form method = "POST">
+      <input type = "text"  name = "name"  placeholder="ENTER YOUR NAME">
+      <input type = "text"  name = "post"  placeholder="ENTER YOUR POST">
+      <button type = "submit">post</button>
+    </form>
+
+{%for p in posts%}
+<div class="post">
+     <h1>{{p.name}}</h1>
+     <p>{{p.content}}</p>
+     <a class ="btn delete" href="/delete/{{p.id}}">delete</a>
+     <a class ="btn like"  href="/like/{{ p.id}}">Like</a>
+     <p>Likes: {{ p.likes }}</p>
+     <form action="/comment/{{ p.id }}" method="POST">
+           <input type="text" name="comment" placeholder="Write a comment">
+           <button type="submit">Comment</button>
+</form>
+     {%for c in p.comments%}
+     <p>{{ c.text }}</p>
+{% endfor %}
+</div>
+{%endfor%}
+</body>
+</html>
