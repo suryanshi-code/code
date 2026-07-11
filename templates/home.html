@@ -3,22 +3,28 @@
 <head>   
 <style>
    input{
-    background-color:hotpink;
+    background-color:rgb(71, 206, 255);
     padding:20px;
     margin:30px;
     border-radius:30px;  
     
 }
-   body{
-     
-    font-family: ziglets;
-    background-image: url("https://img.magnific.com/premium-vector/pink-cloud-aesthetic-grid-template_363897-17156.jpg?semt=ais_hybrid&w=740&q=80");
-    background-size: cover;
-    background-position: center;
+    body {
+      height:100vh;
+      background:linear-gradient(
+       #ececfb 2%,
+       #53d3e3 10%,
+       #669ab8 20%,
+       #9659bc 40%,
+       #7646b0 70%,
+       #28054b 100%);
+        
+      background-repeat:no-repeat;
+      background-size: cover;
 }
 
    .btn{
-    background-color: #e94ac4;
+    background-color:rgb(50, 172, 232);
     padding:15px 35px;
     font-size: 18px;
     color:#0c010a;
@@ -26,16 +32,16 @@
     border-radius: 10px;
 }
    .btn:hover {
-    background-color: rgb(118, 12, 239);
+    background-color: rgb(96, 48, 147);
 }
    .like{
-    background-color: rgb(227, 94, 245);
+    background-color:rgb(50, 172, 232);
 }
-   .delete{
-    background-color: palevioletred;
+   .dislike{
+    background-color:rgb(50, 172, 232);
 }
    button {
-    background-color: #ff2e93;
+    background-color: #550679;
     padding: 22px 60px;
     font-size: 22px;
     font-weight: bold;
@@ -47,8 +53,8 @@
    body{
      font-family:ziglets;
 }
-.post{
-    background: hsla(312, 100%, 67%, 0.8);
+   .post{
+    background: hsl(223, 100%, 86%);
     padding: 20px;
     margin: 20px auto;
     width: 30%;
@@ -59,7 +65,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #e00dab;
+    background-color: #7e3db7;
     padding: 15px;
     color: white;
 }
@@ -92,12 +98,14 @@ button:hover {
      <h1>{{p.name}}</h1>
      <p>{{p.content}}</p>
      <a class ="btn delete" href="/delete/{{p.id}}">delete</a>
-     <a class ="btn like"  href="/like/{{ p.id}}">Like</a>
-     <p>Likes: {{ p.likes }}</p>
+     <a class ="btn like"  href="/like/{{p.id}}">Like</a>
+     <p>Likes: {{p.likes }}</p>
+     <a class="btn dislike" href="/dislike/{{p.id}}">Dislike</a>
+     <p>Dislikes: {{p.dislikes}}</p>
      <form action="/comment/{{ p.id }}" method="POST">
            <input type="text" name="comment" placeholder="Write a comment">
            <button type="submit">Comment</button>
-</form>
+     </form>
      {%for c in p.comments%}
      <p>{{ c.text }}</p>
      {% endfor %}

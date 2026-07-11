@@ -17,6 +17,7 @@ class Post(db.Model):
     name = db.Column(db.String(100))
     content = db.Column(db.String(200))
     likes = db.Column(db.Integer, default=0)
+    dislikes = db.Column(db.Integer,default=0)
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -93,6 +94,12 @@ def likes(id):
     db.session.commit()
     return redirect("/home")
 
+@app.route("/dislike/<int:id>")
+def dislike(id):
+    post=Post.query.get_or_404(id)
+    post.dislikes+=1
+    db.session.commit()
+    return redirect("/home")
 
 @app.route("/comment/<int:id>", methods=["POST"])
 def comments(id):
@@ -110,8 +117,6 @@ def comments(id):
 def logout():
     session.pop("user", None)
     return redirect("/login")
-
-
 
 @app.route("/delete/<int:id>")
 def delete(id):
