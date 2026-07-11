@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>   
 <style>
@@ -19,28 +19,41 @@
 
    .btn{
     background-color: #e94ac4;
-    padding:10px;
+    padding:15px 35px;
+    font-size: 18px;
     color:#0c010a;
     text-decoration: none;
     border-radius: 10px;
-   }
+}
    .btn:hover {
     background-color: rgb(118, 12, 239);
 }
    .like{
     background-color: rgb(227, 94, 245);
-   }
+}
    .delete{
     background-color: palevioletred;
-   }
-   button{
-    background-color:magenta;
-    padding:20px;
-    margin:30px;
+}
+   button {
+    background-color: #ff2e93;
+    padding: 22px 60px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    border: none;
     border-radius: 30px;
-   }
+    cursor: pointer;
+}
    body{
      font-family:ziglets;
+}
+.post{
+    background: hsla(312, 100%, 67%, 0.8);
+    padding: 20px;
+    margin: 20px auto;
+    width: 30%;
+    border-radius: 20px;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
 }
    .navbar {
     display: flex;
@@ -58,19 +71,13 @@ button:hover {
 .navbar h2 {
     margin: 0;
 }
-.post {
-    background-color: #faa9ea;
-    border: 1px solid #480a43;
-    padding: 15px;
-    margin: 15px;
-    width: 300px;
-}
+
 </style>
-      <title>femagaram</title>
+      <title>FEMAGRAM</title>
 </head>
 <body>
     <div class="navbar">
-    <h2>Mini Insta</h2>
+    <h2>FEMAGRAM</h2>
     <a href="/logout" class = "btn">LOGOUT</a>
     </div>
 
@@ -93,7 +100,7 @@ button:hover {
 </form>
      {%for c in p.comments%}
      <p>{{ c.text }}</p>
-{% endfor %}
+     {% endfor %}
 </div>
 {%endfor%}
 </body>

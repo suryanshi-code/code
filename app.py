@@ -1,7 +1,8 @@
 from flask import Flask, render_template,request,redirect 
-app = Flask(__name__)
 from flask import session
-app.secret_key="your_secret_key"
+import os
+app = Flask(__name__)
+app.secret_key=os.urandom(24)
 
 
 from flask_sqlalchemy import SQLAlchemy
@@ -96,10 +97,7 @@ def likes(id):
 @app.route("/comment/<int:id>", methods=["POST"])
 def comments(id):
     text = request.form.get("comment")
-
-    print("FORM DATA:", request.form)   # 👈 ADD
-    print("TEXT:", text)                # 👈 ADD
-
+    
     if text and text.strip() != "":
         post = Post.query.get_or_404(id)
         new_comment = Comment(text=text, post_id=post.id)
