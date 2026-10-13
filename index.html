@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chatgpt - Your Smart Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <a href="#" class="brand" id="brand">
+                    <span class="brand-icon">✦</span>
+                    chatgpt
+                </a>
+
+                <button class="icon-btn close-sidebar" id="closeSidebar"
+                    aria-label="Close sidebar">✕</button>
+            </div>
+
+            <button class="new-chat-btn" id="newChat">
+                <span>＋</span> New chat
+            </button>
+
+            <div class="search-box">
+                <span>⌕</span>
+                <input type="search" id="searchChats"
+                    placeholder="Search conversations">
+            </div>
+
+            <div class="history-heading">YOUR CHATS</div>
+            <div class="chat-history" id="chatHistory"></div>
+
+            <div class="sidebar-bottom">
+                <button class="sidebar-option" id="themeToggle">
+                    <span id="themeIcon">☼</span>
+                    <span id="themeLabel">Light appearance</span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar">C</div>
+                    <div>
+                        <strong>chatgpt</strong>
+                        <small>Personal assistant</small>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main">
+
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="icon-btn menu-btn" id="openSidebar"
+                        aria-label="Open sidebar">☰</button>
+
+                    <span class="mobile-brand">✦ Chatgpt</span>
+
+                    <select id="modelSelect" class="model-select"
+                        aria-label="Choose demo response style">
+                        <option value="balanced">chatgpt Standard</option>
+                        <option value="simple">Simple Answers</option>
+                        <option value="detailed">Detailed Answers</option>
+                    </select>
+                </div>
+
+                <button class="share-btn" id="exportChat">⇩ Export chat</button>
+            </header>
+
+            <!-- Messages and welcome screen -->
+            <section class="conversation" id="conversation"
+                aria-live="polite">
+
+                <div class="welcome" id="welcome">
+                    <div class="welcome-symbol">✦</div>
+                    <h1>What can I help you with?</h1>
+                    <p>Ask a question, explore an idea, or learn something new.</p>
+
+                    <div class="prompt-grid">
+                        <button class="prompt-card"
+                            data-prompt="Explain HTML in simple words">
+                            <span class="prompt-icon blue">⌘</span>
+                            <span>
+                                <strong>Learn something</strong>
+                                <small>Explain a topic simply</small>
+                            </span>
+                        </button>
+
+                        <button class="prompt-card"
+                            data-prompt="Give me ideas for a college project">
+                            <span class="prompt-icon purple">✧</span>
+                            <span>
+                                <strong>Brainstorm ideas</strong>
+                                <small>Explore creative possibilities</small>
+                            </span>
+                        </button>
+
+                        <button class="prompt-card"
+                            data-prompt="Give me a study plan for exams">
+                            <span class="prompt-icon orange">▤</span>
+                            <span>
+                                <strong>Make a study plan</strong>
+                                <small>Organize your tasks</small>
+                            </span>
+                        </button>
+
+                        <button class="prompt-card"
+                            data-prompt="Tell me a fun programming joke">
+                            <span class="prompt-icon green">☺</span>
+                            <span>
+                                <strong>Surprise me</strong>
+                                <small>Discover something fun</small>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="messages" id="messages"></div>
+            </section>
+
+            <!-- Message composer -->
+            <footer class="composer-area">
+                <form class="composer" id="chatForm">
+                    <textarea id="userInput" rows="1"
+                        placeholder="Message chatgpt..."
+                        aria-label="Your message" required></textarea>
+
+                    <div class="composer-bottom">
+                        <div class="composer-hint">
+                            <span>✦</span> Ask anything
+                        </div>
+
+                        <div class="composer-actions">
+                            <button type="button" class="tool-btn"
+                                id="clearChat" title="Clear current chat">
+                                ⌫
+                            </button>
+
+                            <button type="submit" class="send-btn"
+                                id="sendBtn" aria-label="Send message">
+                                ↑
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="disclaimer">
+                    chatgpt is a demo assistant and may provide inaccurate information.
+                </p>
+            </footer>
+
+        </main>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
